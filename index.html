@@ -1252,6 +1252,7 @@
   <button class="mobile-close" onclick="closeMobileNav()">✕</button>
   <a href="#hero" onclick="closeMobileNav()">Home</a>
   <a href="#books" onclick="closeMobileNav()">Books</a>
+  <a href="shop.html" onclick="closeMobileNav()">Shop</a>
   <a href="#about" onclick="closeMobileNav()">About</a>
   <a href="#instagram" onclick="closeMobileNav()">Follow</a>
   <a href="#journal" onclick="closeMobileNav()">Journal</a>
@@ -1263,6 +1264,7 @@
   <a href="#hero" class="nav-logo">LB BOOKS</a>
   <ul class="nav-links">
     <li><a href="#books">Books</a></li>
+    <li><a href="shop.html">Shop</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#instagram">Follow</a></li>
     <li><a href="#journal">Journal</a></li>
@@ -1652,51 +1654,159 @@
     <span class="section-eyebrow">The Journal</span>
     <h2 class="section-title">Words Beyond the Page</h2>
     <div class="gold-rule"><span class="gold-rule-star">✦</span></div>
-    <p class="section-intro">Thoughts on writing, reading, publishing, and the stories that shape us.</p>
+    <p class="section-intro">Honest thoughts on writing, publishing, and the place that keeps making me a writer whether I asked for it or not.</p>
   </div>
 
-  <!-- Placeholder posts — replace with your blog CMS or static posts -->
   <div class="blog-grid reveal">
-    <article class="blog-card">
+
+    <article class="blog-card" onclick="openPost('post1')">
       <span class="blog-category">Behind the Pages</span>
-      <h3 class="blog-title">Why Independent Publishing Feels Like Coming Home</h3>
-      <p class="blog-excerpt">There is something about holding a book you believed in from the very first sentence that no sales chart can replicate. This is why LB Books exists.</p>
+      <h3 class="blog-title">The Gates Nobody Tells You About</h3>
+      <p class="blog-excerpt">Let me tell you what nobody warns you about. The writing is the easy part. The hard part is the polite rejection that arrives at three in the afternoon and quietly ruins your week while you are making a cup of tea.</p>
       <div class="blog-meta">
-        <span>Coming soon</span>
+        <span>May 2025</span>
+        <div class="blog-meta-dot"></div>
+        <span>6 min read</span>
+      </div>
+    </article>
+
+    <article class="blog-card" onclick="openPost('post2')">
+      <span class="blog-category">On Writing</span>
+      <h3 class="blog-title">The Story Will Not Wait Forever</h3>
+      <p class="blog-excerpt">There is a story in your head right now. Do not insult both of us by pretending there is not. You have been carrying it around for years, and every time you sit down to write it, something stops you. Let me save you a few years of self-doubt.</p>
+      <div class="blog-meta">
+        <span>May 2025</span>
         <div class="blog-meta-dot"></div>
         <span>5 min read</span>
       </div>
     </article>
 
-    <article class="blog-card">
-      <span class="blog-category">For Young Readers</span>
-      <h3 class="blog-title">The Magic of Reading Before Sleep: Why Bedtime Stories Still Matter</h3>
-      <p class="blog-excerpt">Research keeps confirming what every parent who has watched a child disappear into a story already knows. Books at bedtime do something sleep alone cannot.</p>
+    <article class="blog-card" onclick="openPost('post3')">
+      <span class="blog-category">A Scottish Heart</span>
+      <h3 class="blog-title">Why Scotland Writes Itself Into Everything</h3>
+      <p class="blog-excerpt">Try, if you can, to grow up in this country and not have an imagination. I dare you. There is a particular quality to the light here in the hour before a storm, and you cannot stand in a moment like that and stay ordinary.</p>
       <div class="blog-meta">
-        <span>Coming soon</span>
-        <div class="blog-meta-dot"></div>
-        <span>4 min read</span>
-      </div>
-    </article>
-
-    <article class="blog-card">
-      <span class="blog-category">For Authors</span>
-      <h3 class="blog-title">What Indie Authors Deserve: A Publishing Partner, Not a Gatekeeper</h3>
-      <p class="blog-excerpt">The landscape of publishing has shifted entirely. Independent authors no longer need permission. They need community, craft, and a press that genuinely has their back.</p>
-      <div class="blog-meta">
-        <span>Coming soon</span>
+        <span>May 2025</span>
         <div class="blog-meta-dot"></div>
         <span>6 min read</span>
       </div>
     </article>
+
   </div>
 
-  <div style="text-align: center; margin-top: 3rem;" class="reveal">
-    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--parchment); opacity: 0.4; font-size: 1rem;">
-      Journal posts will appear here once your blog is connected. These cards are placeholder templates.
-    </p>
+  <!-- Full post modal -->
+  <div id="post-overlay" style="display:none; position:fixed; inset:0; background:rgba(8,13,20,0.97); z-index:500; overflow-y:auto; padding:4rem 2rem;">
+    <button onclick="closePost()" style="position:fixed; top:2rem; right:2rem; background:rgba(8,13,20,0.85); border:1px solid rgba(203,169,118,0.4); color:var(--gold); font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.3em; padding:0.8rem 1.5rem; cursor:pointer; text-transform:uppercase; z-index:501;">✕ Close</button>
+    <div id="post-content" style="max-width:720px; margin:0 auto;"></div>
   </div>
+
 </section>
+
+<script>
+const posts = {
+  post1: {
+    category: "Behind the Pages",
+    date: "May 2025",
+    title: "The Gates Nobody Tells You About",
+    body: `<p>Let me tell you what nobody warns you about.</p>
+<p>The writing is the easy part. The hard part is everything that comes after. The polite rejection that arrives at three in the afternoon and quietly ruins your week while you are making a cup of tea. The agents who say your manuscript is beautiful but the market is difficult right now. The publishers who say it is not quite right for our list. The friends who ask, gently, how the book is going, and the moment your face does the thing it does before you have arranged it.</p>
+<p>The whole industry runs on a single, exhausting illusion. That if you just work hard enough, write well enough, query smart enough, somebody behind a desk in London will eventually decide you are allowed to be a real writer.</p>
+<p>I am here to ruin that for you.</p>
+<p>Traditional publishing is not a meritocracy. It never was. It is a series of gates, and every gate has a gatekeeper, and every gatekeeper has a list of reasons that have absolutely nothing to do with whether your story is any good. Your platform is too small. Your timing is off. We just signed something similar. We loved it but we could not get marketing on board. We loved it but we could not get sales on board. We loved it but. We loved it but. We loved it but.</p>
+<p>That word, "but," is the sound of a door closing.</p>
+<p>And here is what nobody is brave enough to say out loud. Most of the writers who break through traditional publishing are not the best writers. They are the most stubborn ones. They are the ones with the financial freedom to keep writing while they wait. They are the ones with the agent friend, the editor cousin, the literary aunt. The talent is real. But the talent, I am sorry to tell you, is not the thing.</p>
+<p>I waited at those gates for years. I have a folder of polite rejection emails I could paper a wall with. Every one of them written by someone who probably skimmed three pages on a Tuesday before lunch and decided my children's book was not for them. Fine. That is their job. I do not even blame them.</p>
+<p>What I blame is the story we keep telling each other. That getting past those gates is the only legitimate way to be an author. That self-publishing is a lesser thing. That indie books are vanity projects. That if you were really good enough, you would already be on a Penguin contract.</p>
+<p>It is rubbish. All of it. Beautifully bound, prestigiously printed rubbish.</p>
+<p>I started LB Books because I got tired of asking. I had stories I believed in. I had children who deserved books about minds like theirs. I had a young adult series fully drafted and a stack of "not for us" emails to show for it. And one morning I woke up and realised something that ought to be obvious to every writer but somehow never is.</p>
+<p><strong style="color:var(--gold);">Nobody is coming to give you permission.</strong></p>
+<p>Not ever. Not for anything that matters. The permission was always yours. You just have to be willing to take it.</p>
+<p>So I took it. I built a publishing house from my kitchen table. I learned what an ISBN was and how to register one. I figured out distribution and print runs and cover design and the legal small print of being a publisher. I made mistakes, expensive ones, the kind that teach you fast. And I put books into the world that would never, ever have made it through a slush pile in their current form, and those books are now in real children's hands, and those hands turn the pages, and that is the only metric that has ever mattered.</p>
+<p>What I want every independent writer to know, sitting in their kitchen with a manuscript and a quiet, gnawing doubt, is this.</p>
+<p>The gates are real. The gatekeepers are tired and overworked and not personally invested in keeping you out, but they are also not personally invested in letting you in. You can spend a decade trying to climb over them. Some people do, and good for them, genuinely. But you can also just walk around. And the people who walked around are not lesser writers. They are smarter ones.</p>
+<p>I am not saying it is easy. It is not. It is brutal and lonely and full of work that has nothing to do with the writing itself, and there are days you will wonder what you have done.</p>
+<p>What I am saying is this. The gates are not the only way in. They never were. And the sooner you stop waiting at them, the sooner you can get on with the actual work of being a writer.</p>
+<p>Which is, in case anyone forgot, the writing.</p>`
+  },
+  post2: {
+    category: "On Writing",
+    date: "May 2025",
+    title: "The Story Will Not Wait Forever",
+    body: `<p>There is a story in your head right now.</p>
+<p>Do not insult both of us by pretending there is not. You know exactly the one I mean. You have been carrying it around for months, maybe years, maybe most of your adult life. It came to you in a shower, in a traffic jam, in the half-light before sleep when your brain finally went quiet enough to let it in. And every time you sit down to write it, something stops you.</p>
+<p>Time. Tiredness. The kids. The job. The dishes. The terrible suspicion that you are not the kind of person who writes books, that real writers are someone else, somewhere else, doing something glamorous you would not recognise if you saw it.</p>
+<p>Let me save you a few years of self-doubt.</p>
+<p>The thing that stops you is not real. I do not mean the kids and the dishes and the tiredness are not real. They are. Life is loud and demanding and it does not pause to let you write, and anyone who tells you otherwise is selling a writing course. What I mean is the voice. The one inside you that says you are not good enough, not trained enough, not literary enough, not anything enough. That voice is lying to you. Confidently, fluently, with great authority.</p>
+<p>But still lying.</p>
+<p>Here is the thing nobody at the writing retreat with the artisanal scones is going to admit. <strong style="color:var(--gold);">Confidence is a myth writers tell each other at parties.</strong> The writers I know, the ones who actually finish books, are not confident. They are terrified. They sit down at their desks every morning with their hearts in their mouths and they write the next sentence anyway. That is the entire trick. That is the whole secret. There is no other one. I am sorry if you were hoping for something more exotic.</p>
+<p>You do not need to feel ready. Ready is a feeling that arrives, if it arrives at all, somewhere around chapter twelve and only when you have already done the work that earned it. You need to feel scared and do it anyway.</p>
+<p>So sit down today. Not tomorrow. Not when the kids are older. Not when you have a clean desk and a quiet hour and the right notebook from the shop you saw on Instagram. Today. Open whatever you have to hand. A phone. A notes app. The back of a receipt. Write one sentence of the story that has been waiting for you.</p>
+<p>Just one. Just one single line.</p>
+<p>Then another tomorrow.</p>
+<p>And here is the thing I really, really need you to hear, because this is the bit that should keep you up at night.</p>
+<p><strong style="color:var(--gold);">The story in your head will not wait forever.</strong></p>
+<p>It is patient, but it is not infinite. There comes a point where stories give up on the people carrying them and go and find someone else. I have felt it happen. I have lost stories I should have written. I sat on them, told myself I would get to them later, when life was easier, when I had more time, when I felt more like a writer. And one day I went looking for them and they were just gone. Quiet. Vacated. Off doing their work in someone else's head, someone who showed up for them.</p>
+<p>That is a particular kind of grief, and I would not wish it on anyone.</p>
+<p>So whatever it is. The fantasy novel. The memoir you are not sure anyone wants to read. The children's book that has been sitting in your chest for a decade. The strange little story you cannot stop thinking about even though you have no idea what it is for.</p>
+<p>It is for something. The fact that you cannot stop thinking about it is the only proof you need. Stories do not choose people at random. They are picky, and they are stubborn, and they will only put up with being ignored for so long.</p>
+<p>You were chosen for a reason.</p>
+<p>Now stop reading articles about writing and go and write the thing.</p>
+<p>I mean it. Close this tab.</p>
+<p><em>Go.</em></p>`
+  },
+  post3: {
+    category: "A Scottish Heart",
+    date: "May 2025",
+    title: "Why Scotland Writes Itself Into Everything",
+    body: `<p>Try, if you can, to grow up in this country and not have an imagination.</p>
+<p>I dare you.</p>
+<p>There is a particular quality to the light here, in the hour before a storm. The sky goes the colour of pewter. The heather glows almost lilac against it, lit from below by some trick of refraction the eye cannot quite work out. The wind drops. The birds go quiet. And the whole landscape holds its breath, the way a room does when somebody is about to say something true.</p>
+<p>You cannot stand in a moment like that and stay ordinary.</p>
+<p>I have lived in Scotland all my life, and I will tell you something I have come to believe with my whole chest. This country writes itself into you whether you want it to or not. It seeps in through the skin. The granite light of an Edinburgh morning, the wet green silence of a glen, the way the sea up in Caithness goes the colour of beaten silver and stays that way for hours like it is showing off. None of it is neutral. None of it is just scenery. It does something to a person, slowly, over decades, the way good wine does something to a glass.</p>
+<p>It makes you a writer, eventually, even if you fight it.</p>
+<p>And honestly, why would you fight it.</p>
+<p>There is a reason this absurd, tiny country has produced so many storytellers. Walter Scott. Robert Louis Stevenson. Muriel Spark. J.M. Barrie. Iain Banks. Ali Smith. The list runs on and on, far past what a country of five million people should reasonably be allowed to claim. It is not coincidence. It is not even talent, really, although there is plenty of that. It is the land itself doing the work. Showing up. Making sure.</p>
+<p>Scotland gives you weather that has personality. Proper personality. Not English drizzle, sorry, an actual character of weather, the kind that shows up in your living room as a presence. It gives you ruins on hilltops with histories nobody fully remembers and probably never will. It gives you forests where the air feels older than the road that brought you to them. It gives you long winter darknesses where the only sensible thing to do is light a candle and tell each other stories, because frankly what else is there.</p>
+<p>It gives you a coastline so dramatic that even a quick walk along it feels like the opening chapter of a novel you have not written yet.</p>
+<p>I write children's books in Scotland. I write young adult fiction in Scotland. I write about brave little cats called Kylo and brilliant minds and patchwork parades and stardust surprises, and every single one of those stories has Scottish weather in its bones whether the page admits it or not. The mist. The held-breath stillness. The sense that something magical is about to happen because around here, something magical usually is, and you would be foolish to bet against it.</p>
+<p>People ask me, sometimes, where I find my inspiration. As if it is hidden somewhere. As if there is a trick.</p>
+<p><strong style="color:var(--gold);">I do not find it. I just stand outside long enough to let it find me.</strong></p>
+<p>That is the entire secret. There is no writing retreat, no course, no expensive notebook that can do what a damp afternoon in the Cairngorms can do for free. Just go and stand somewhere. Be quiet. Let the country tell you what it wants you to write next. It will. It always does. The only people I know who run out of ideas are the ones who never get up from their desks.</p>
+<p>If you are a writer, or you want to be one, and you have the chance to spend time here, take it. Do not overthink it. Walk along Cramond shore at low tide. Drive up to Glencoe in late autumn when the bracken has gone copper and the air smells of woodsmoke. Sit in a pub in the Borders while the rain comes down sideways and the dog under the next table sighs in its sleep. Climb anything you can climb. Stand somewhere high and look at the way the land folds away into the distance, and try to hold all of it in your head at once.</p>
+<p>You will not be able to. That is the point.</p>
+<p>The thing about Scotland is that it gives you more than you can carry. So you write it down. Piece by piece. Story by story. For the rest of your life. And it never runs out, this place. It just keeps giving, generation after generation, story after story, weather front after weather front, like it is genuinely worried you might run out of material if it ever paused for breath.</p>
+<p>I do not think you can find a better place to be a writer.</p>
+<p>I am not entirely sure you can find a better place to be alive.</p>`
+  }
+};
+
+function openPost(id) {
+  const post = posts[id];
+  const overlay = document.getElementById('post-overlay');
+  const postContent = document.getElementById('post-content');
+  postContent.innerHTML = `
+    <p style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.5em;color:var(--gold);opacity:0.7;text-transform:uppercase;margin-bottom:1rem;">${post.category}</p>
+    <h2 style="font-family:'Cinzel',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:400;color:var(--parchment);letter-spacing:0.05em;line-height:1.3;margin-bottom:1rem;">${post.title}</h2>
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(203,169,118,0.2);">
+      <span style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.3em;color:var(--gold);opacity:0.5;text-transform:uppercase;">${post.date}</span>
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;line-height:2;color:var(--parchment);opacity:0.9;">${post.body}</div>
+    <div style="margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(203,169,118,0.2);text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);opacity:0.6;font-size:1.1rem;">— Gayle, LB Books</p>
+    </div>
+  `;
+  overlay.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  overlay.scrollTop = 0;
+}
+
+function closePost() {
+  document.getElementById('post-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closePost(); });
+</script>
 
 <!-- ─── NEWSLETTER ─── -->
 <section id="newsletter">
@@ -1726,6 +1836,7 @@
       <ul>
         <li><a href="#books">The Little Boo Series</a></li>
         <li><a href="#books">Young Adult Fiction</a></li>
+        <li><a href="shop.html">The Shop</a></li>
         <li><a href="https://www.amazon.co.uk/stores/Gayle-McDonald-Allan/author/B0FB9CZ7T9/allbooks" target="_blank">Shop on Amazon</a></li>
       </ul>
     </div>
